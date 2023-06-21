@@ -63,7 +63,7 @@
                     <div id="pic-right"><img src="images/work_right.gif" width="27" height="57" alt=""></div>
                 </div>
                 <div id="main">
-                    <div id="left">
+                    <div id="left"></div>
                         <div id="content-bg">
                             <div id="content-top">
                                 <div id="content-title">
