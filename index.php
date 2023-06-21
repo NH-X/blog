@@ -2,7 +2,23 @@
     require_once 'Conn.php';
     $conn=Conn::getInstance();
 
-    $select
+    $selectBlogSQL="select * from blog_data";
+    $list=$conn->query($selectBlogSQL);
+
+    //分页功能
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $productsPerPage = 8;
+    $offset = ($page - 1) * $productsPerPage;
+
+    // Count the total number of products
+    $totalProductsSql = "SELECT COUNT(*) as total FROM blog_data";
+    $totalProductsResult = $conn->query($totalProductsSql);
+    $totalProducts = $totalProductsResult->fetch_assoc()['total'];
+
+    // Calculate the total number of pages
+    $totalPages = ceil($totalProducts / $productsPerPage);
+
+    $conn->close();
 ?>
 
 <!doctype html>
@@ -50,7 +66,9 @@
                     <div id="left">
                         <div id="content-bg">
                             <div id="content-top">
-                                <div id="content-title"><img src="images/index11.gif" width="19" height="20" alt="">这里是博客标题</div>
+                                <div id="content-title">
+                                    <img src="images/index11.gif" width="19" height="20" alt="">
+                                </div>
                                 <div id="content-tian"><img src="images/weather_cloudy.gif" width="16" height="16" alt=""></div>
                                 <div id="content-date">这里是日期</div>
                             </div>
