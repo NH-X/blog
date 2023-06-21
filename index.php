@@ -1,6 +1,8 @@
 ﻿<?php
     require_once 'Conn.php';
     $conn=Conn::getInstance();
+
+    $select
 ?>
 
 <!doctype html>
@@ -35,13 +37,13 @@
                 <div id="pic-bg">
                     <div id="pic-left"><img src="images/work_left.gif" width="27" height="57" alt=""></div>
                     <div class="pic01"><img src="images/work6.gif" width="112" height="102" alt=""><br>
-                      开心大眼仔</div>
+                        开心大眼仔</div>
                     <div class="pic01"><img src="images/work7.gif" width="112" height="102" alt=""><br>
-                      绝望主妇</div>
+                        绝望主妇</div>
                     <div class="pic01"><img src="images/work8.gif" width="112" height="102" alt=""><br>
-                      精美图标集</div>
+                        精美图标集</div>
                     <div class="pic01"><img src="images/work9.gif" width="112" height="102" alt=""><br>
-                      机器狗阿七</div>
+                        机器狗阿七</div>
                     <div id="pic-right"><img src="images/work_right.gif" width="27" height="57" alt=""></div>
                 </div>
                 <div id="main">
@@ -54,8 +56,7 @@
                             </div>
                         <div id="content-text">
                             <img src="images/index06.gif" width="550" height="80" alt="">
-                            <br>
-                          798之行，周五和公司同事一起去了798，幻想着也许在里面能够追寻一些有用的灵感，也许这也是一个新的开始吧！
+                            <br>798之行，周五和公司同事一起去了798，幻想着也许在里面能够追寻一些有用的灵感，也许这也是一个新的开始吧！
                         </div>
                             <div id="content-more">
                                 <a href="#" target="_blank">
@@ -84,9 +85,7 @@
                         <div id="right-gltext">
                             <ul>
                                 <li>
-                                    <a href="./admin/login.php" class="link01">
-                                        管理登录
-                                    </a>
+                                    <a href="./admin/login.php" class="link01">管理登录</a>
                                 </li>
                             </ul>
                         </div>
