@@ -96,7 +96,7 @@
                                 <div id="content-date"><?php echo $blogDate?></div>
                             </div>
                             <div id="content-text">
-                                <img src="images/index06.gif" width="550" height="80" alt="">
+                                <img src="<?php echo "./images/$blogPic";?>" width="550" height="80" alt="">
                                 <br><?php echo $blogContent?>
                             </div>
                         </div>
