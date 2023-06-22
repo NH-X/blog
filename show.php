@@ -1,6 +1,22 @@
 ﻿<?php
+    $currentID=$_GET['blogID'];
+
     require_once 'Conn.php';
     $conn=Conn::getInstance();
+
+    $selectCurrentSql="select distinct * from blog_data where _id='$currentID'";
+    $currentBlog=$conn->query($selectCurrentSql);
+
+    if($currentBlog->num_rows>0){
+        $row=$currentBlog->fetch_assoc();
+        $blogID=$row['_id'];
+        $blogTitle=$row['blog_title'];
+        $blogDate=$row['blog_date'];
+        $blogType=$row['blog_type'];
+        $blogWeather=$row['blog_weather'];
+        $blogPic=$row['blog_pic'];
+        $blogContent=$row['blog_centent'];
+    }
 ?>
 
 <!doctype html>
@@ -73,15 +89,15 @@
                         <div id="show-main">
                             <div id="content-top">
                                 <div id="content-title">
-                                    <img src="images/index11.gif" width="19" height="20" alt="">这里是博客标题</div>
+                                    <img src="images/index11.gif" width="19" height="20" alt=""><?php echo $blogTitle?></div>
                                 <div id="content-tian">
                                     <img src="images/weather_cloudy.gif" width="16" height="16" alt="">
                                 </div>
-                                <div id="content-date">这里是日期</div>
+                                <div id="content-date"><?php echo $blogDate?></div>
                             </div>
                             <div id="content-text">
                                 <img src="images/index06.gif" width="550" height="80" alt="">
-                                <br>798之行，周五和公司同事一起去了798，幻想着也许在里面能够追寻一些有用的灵感，也许这也是一个新的开始吧！
+                                <br><?php echo $blogContent?>
                             </div>
                         </div>
                         <div id="show-bottom"></div>

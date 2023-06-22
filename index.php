@@ -1,9 +1,9 @@
-﻿<?php
+﻿d<?php
     require_once 'Conn.php';
     $conn=Conn::getInstance();
 
     $selectBlogSQL="select * from blog_data";
-    $list=$conn->query($selectBlogSQL);
+    $blogList=$conn->query($selectBlogSQL);
 
     //分页功能
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -63,27 +63,64 @@
                     <div id="pic-right"><img src="images/work_right.gif" width="27" height="57" alt=""></div>
                 </div>
                 <div id="main">
-                    <div id="left"></div>
-                        <div id="content-bg">
-                            <div id="content-top">
-                                <div id="content-title">
-                                    <img src="images/index11.gif" width="19" height="20" alt="">
+                    <?php
+                        if($blogList->num_rows>0){
+                            while($row=$blogList->fetch_assoc()){
+                                $blogID=$row['_id'];
+                                $blogTitle=$row['blog_title'];
+                                $blogDate=$row['blog_date'];
+                                $blogType=$row['blog_type'];
+                                $blogWeather=$row['blog_weather'];
+                                $blogPic=$row['blog_pic'];
+                                $blogContent=$row['blog_centent'];
+                                ?>
+                                <!---->
+                                <div id="left"></div>
+                                <div id="content-bg">
+                                    <div id="content-top">
+                                        <div id="content-title">
+                                            <img src="images/index11.gif" width="19" height="20" alt="">
+                                        </div>
+                                        <div id="content-tian">
+                                            <img src="images/weather_cloudy.gif" width="16" height="16" alt="">
+                                        </div>
+                                        <div id="content-date"><?php echo $blogDate?></div>
+                                    </div>
+                                    <div id="content-text">
+                                        <img src="images/index06.gif" width="550" height="80" alt="">
+                                        <br><?php echo $blogContent?>
+                                    </div>
+                                    <div id="content-more">
+                                        <a href="show.php?blogID=<?php echo $blogID?>" target="_blank">
+                                            <img src="images/index07.gif" width="13" height="10" alt=""> 查看详情
+                                        </a>
+                                    </div>
                                 </div>
-                                <div id="content-tian"><img src="images/weather_cloudy.gif" width="16" height="16" alt=""></div>
-                                <div id="content-date">这里是日期</div>
-                            </div>
-                        <div id="content-text">
-                            <img src="images/index06.gif" width="550" height="80" alt="">
-                            <br>798之行，周五和公司同事一起去了798，幻想着也许在里面能够追寻一些有用的灵感，也许这也是一个新的开始吧！
-                        </div>
-                            <div id="content-more">
-                                <a href="#" target="_blank">
-                                    <img src="images/index07.gif" width="13" height="10" alt=""> 查看详情
-                                </a>
-                            </div>
-                        </div>
-                        <div id="no-content">暂时还没有日志，赶快写日志吧！</div>
-                        <div id="content-bar">第一页　　上一页　　下一页　　最后一页</div>
+                                <?php
+                            }
+                        }
+                        else{
+                            echo "<div id='no-content'>暂时还没有日志，赶快写日志吧！</div>";
+                        }?>
+                    <div id="content-bar">
+                        <?php
+                            if($totalProducts <= $productsPerPage){
+                                echo "第一页 最后一页";
+                            }
+                            else{
+                                echo "<a href='index.php?page=1'>第一页</a> ";
+                                if ($page > 1) {
+                                $prevPage = $page - 1;
+                                echo "<a href='index.php?page=$prevPage'>上一页</a> ";
+                                }
+                                if ($page < $totalPages) {
+                                $nextPage = $page + 1;
+                                echo "<a href='index.php?page=$nextPage'>下一页</a> ";
+                                }
+                                echo "<a href='index.php?page=$totalPages'>最后一页</a>";
+                            }
+                        ?>
+                    </div>
                     </div>
                     <div id="right">
                         <div id="right-menu">
@@ -108,7 +145,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div>    
+                <!---->
                 <div id="bottom">
                     Kiss2018 Design 2018©all rights reserved    |   京ICP备00000000号
                 </div>
