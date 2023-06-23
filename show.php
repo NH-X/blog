@@ -15,7 +15,7 @@
         $blogType=$row['blog_type'];
         $blogWeather=$row['blog_weather'];
         $blogPic=$row['blog_pic'];
-        $blogContent=$row['blog_centent'];
+        $blogCentent=$row['blog_centent'];
     }
     $conn->close();
 ?>
@@ -98,7 +98,7 @@
                             </div>
                             <div id="content-text">
                                 <img src="upload/<?php echo $blogPic?>" width="550" height="80" alt="">
-                                <br><?php echo $blogContent?>
+                                <br><?php echo $blogCentent?>
                             </div>
                         </div>
                         <div id="show-bottom"></div>

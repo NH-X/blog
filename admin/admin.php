@@ -50,7 +50,21 @@
       </div>
     </div>
     <div id="banner"><img src="../images/banner.jpg" width="808" height="343" alt=""></div>
+    <!---->
     <div id="main">
+      <?php
+          if($blogList->num_rows>0){
+              while($row=$blogList->fetch_assoc()){
+                  $blogID=$row['_id'];
+                  $blogTitle=$row['blog_title'];
+                  $blogDate=$row['blog_date'];
+                  $blogType=$row['blog_type'];
+                  $blogWeather=$row['blog_weather'];
+                  $blogPic=$row['blog_pic'];
+                  $blogCentent=$row['blog_centent'];
+              }
+          }
+      ?>
       <div id="left">
         <div id="admin-title">
           <dl>
@@ -75,6 +89,7 @@
         </div>
       </div>
     </div>
+    <!---->
     <div id="bottom">Kiss2018 Design 2018©all rights reserved    |   京ICP备00000000号</div>
   </div>
 </div>
