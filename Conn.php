@@ -10,7 +10,7 @@
         private function __construct() {
             // 私有构造方法，防止直接实例化
             // 读取配置文件
-            $configFile = file_get_contents("config.json");
+            $configFile = file_get_contents(__DIR__."/config.json");
             $config = json_decode($configFile, true);
 
             // 从配置文件中获取数据库连接信息

@@ -1,3 +1,26 @@
+<?php 
+    require_once '../Conn.php';
+    $conn=Conn::getInstance();
+
+    $selectBlogSQL="select * from blog_data";
+    $blogList=$conn->query($selectBlogSQL);
+
+    //分页功能
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $productsPerPage = 5;
+    $offset = ($page - 1) * $productsPerPage;
+
+    // Count the total number of products
+    $totalProductsSql = "SELECT COUNT(*) as total FROM blog_data";
+    $totalProductsResult = $conn->query($totalProductsSql);
+    $totalProducts = $totalProductsResult->fetch_assoc()['total'];
+
+    // Calculate the total number of pages
+    $totalPages = ceil($totalProducts / $productsPerPage);
+
+    $conn->close();
+?>
+
 <!doctype html>
 <html>
 <head>

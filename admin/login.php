@@ -1,3 +1,34 @@
+<?php
+    require_once '../Conn.php';
+    $conn=Conn::getInstance();
+
+    $selectBlogSQL="select * from admin_user";
+    $blogList=$conn->query($selectBlogSQL);
+
+    //处理登录请求
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $username=$_POST['username'];
+        $password=$_POST['password'];
+
+        // 查询数据库中是否存在匹配的用户名和密码
+        $hasUserSQL="select * from admin_user where username = '$username' and password= '$password'";
+        $result=$conn->query($hasUserSQL);
+
+        if($result->num_rows==1){
+            //登录成功
+            // 这里可以添加进一步的操作，例如设置登录状态或跳转到其他页面
+            $conn->close();
+            $_SESSION['admin']=$username;
+            header("Location:admin.php");
+        }
+        else{
+          // 登录失败
+          // 这里可以添加相应的提示或跳转到登录页面
+          echo "用户名或密码错误";
+        }
+    }
+?>
+
 <!doctype html>
 <html>
 <head>

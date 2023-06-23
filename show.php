@@ -17,6 +17,7 @@
         $blogPic=$row['blog_pic'];
         $blogContent=$row['blog_centent'];
     }
+    $conn->close();
 ?>
 
 <!doctype html>

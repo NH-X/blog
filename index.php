@@ -1,4 +1,4 @@
-﻿d<?php
+﻿<?php
     require_once 'Conn.php';
     $conn=Conn::getInstance();
 
