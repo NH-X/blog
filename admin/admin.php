@@ -52,39 +52,65 @@
     <div id="banner"><img src="../images/banner.jpg" width="808" height="343" alt=""></div>
     <!---->
     <div id="main">
-      <?php
-          if($blogList->num_rows>0){
-              while($row=$blogList->fetch_assoc()){
-                  $blogID=$row['_id'];
-                  $blogTitle=$row['blog_title'];
-                  $blogDate=$row['blog_date'];
-                  $blogType=$row['blog_type'];
-                  $blogWeather=$row['blog_weather'];
-                  $blogPic=$row['blog_pic'];
-                  $blogCentent=$row['blog_centent'];
-              }
-          }
-      ?>
       <div id="left">
         <div id="admin-title">
           <dl>
             <dt>标题名称</dt><dd>发布日期</dd><dd>操作</dd>
           </dl>
         </div>
-        <div id="admin-list">
-          <dl>
-            <dt>这里是博客标题</dt><dd>日期</dd><dd><a href="#" class="link02">编辑</a> | <a href="#" class="link02">删除</a></dd>
-          </dl>
+        <?php
+            if($blogList->num_rows>0){
+                while($row=$blogList->fetch_assoc()){
+                    $blogID=$row['_id'];
+                    $blogTitle=$row['blog_title'];
+                    $blogDate=$row['blog_date'];
+                    $blogType=$row['blog_type'];
+                    $blogWeather=$row['blog_weather'];
+                    $blogPic=$row['blog_pic'];
+                    $blogCentent=$row['blog_centent'];
+                    ?>
+                    <div id="admin-list">
+                        <dl>
+                            <dt><?php echo $blogTitle?></dt>
+                            <dd><?php echo $blogDate?></dd>
+                            <dd>
+                                <a href="blog-updata.php?blogID=<?php echo $blogID?>" class="link02">编辑</a> | 
+                                <a href="blog-del.php?blogID=<?php echo $blogID?>" class="link02">删除</a></dd>
+                        </dl>
+                    </div>
+                    <?php
+                }
+            }
+            else{?>
+                <div id="admin-no">暂时还没有日志，赶快写日志吧！</div>
+                <?php
+            }?>
+        <div id="admin-bar">
+            <?php
+                if($totalProducts <= $productsPerPage){
+                    echo "第一页 最后一页";
+                }
+                else{
+                    echo "<a href='index.php?page=1'>第一页</a> ";
+                    if ($page > 1) {
+                    $prevPage = $page - 1;
+                    echo "<a href='index.php?page=$prevPage'>上一页</a> ";
+                    }
+                    if ($page < $totalPages) {
+                    $nextPage = $page + 1;
+                    echo "<a href='index.php?page=$nextPage'>下一页</a> ";
+                    }
+                    echo "<a href='index.php?page=$totalPages'>最后一页</a>";
+                }
+            ?>
         </div>
-        <div id="admin-no">暂时还没有日志，赶快写日志吧！</div>
-        <div id="admin-bar">第一页　　上一页　　下一页　最后一页</div>
       </div>
       <div id="admin-right">
         <div id="right-gltext">
           <ul>
-            <li><a href="#" class="link01">管理博客</a></li>
-            <li><a href="#" class="link01">添加博客</a></li>
-            <li>退出管理</li>
+            <li><a href="admin.php" class="link01">管理博客</a></li>
+            <li><a href="blog-add.php" class="link01">添加博客</a></li>
+            <li><a href="../index.php" class="link01">退出管理</a></li>
           </ul>
         </div>
       </div>

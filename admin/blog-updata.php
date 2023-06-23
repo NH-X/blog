@@ -68,9 +68,9 @@
       <div id="admin-right">
         <div id="right-gltext">
           <ul>
-            <li><a href="#" class="link01">管理博客</a></li>
-            <li><a href="#" class="link01">添加博客</a></li>
-            <li>退出管理</li>
+            <li><a href="admin.php" class="link01">管理博客</a></li>
+            <li><a href="blog-add.php" class="link01">添加博客</a></li>
+            <li><a href="../index.php" class="link01">退出管理</a></li>
           </ul>
         </div>
       </div>
