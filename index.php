@@ -7,7 +7,7 @@
 
     //分页功能
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $productsPerPage = 8;
+    $productsPerPage = 5;
     $offset = ($page - 1) * $productsPerPage;
 
     // Count the total number of products
@@ -79,16 +79,17 @@
                                 <div id="content-bg">
                                     <div id="content-top">
                                         <div id="content-title">
-                                            <img src="images/index11.gif" width="19" height="20" alt="">
+                                            <img src="images/<?php echo $blogType?>" width="19" height="20" alt="">
+                                            <?php echo $blogTitle?>
                                         </div>
                                         <div id="content-tian">
-                                            <img src="images/weather_cloudy.gif" width="16" height="16" alt="">
+                                            <img src="images/<?php echo $blogWeather?>" width="16" height="16" alt="">
                                         </div>
                                         <div id="content-date"><?php echo $blogDate?></div>
                                     </div>
                                     <div id="content-text">
-                                        <img src="images/index06.gif" width="550" height="80" alt="">
-                                        <br><?php echo $blogContent?>
+                                        <img src="upload/<?php echo $blogPic?>" width="550" height="80" alt="">
+                                        <br><?php echo substr($blogContent,0,260);echo "..."?>
                                     </div>
                                     <div id="content-more">
                                         <a href="show.php?blogID=<?php echo $blogID?>" target="_blank">

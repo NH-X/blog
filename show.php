@@ -89,14 +89,14 @@
                         <div id="show-main">
                             <div id="content-top">
                                 <div id="content-title">
-                                    <img src="images/index11.gif" width="19" height="20" alt=""><?php echo $blogTitle?></div>
+                                    <img src="images/<?php echo $blogType?>" width="19" height="20" alt=""><?php echo $blogTitle?></div>
                                 <div id="content-tian">
-                                    <img src="images/weather_cloudy.gif" width="16" height="16" alt="">
+                                    <img src="images/<?php echo $blogWeather?>" width="16" height="16" alt="">
                                 </div>
                                 <div id="content-date"><?php echo $blogDate?></div>
                             </div>
                             <div id="content-text">
-                                <img src="<?php echo "./images/$blogPic";?>" width="550" height="80" alt="">
+                                <img src="upload/<?php echo $blogPic?>" width="550" height="80" alt="">
                                 <br><?php echo $blogContent?>
                             </div>
                         </div>
