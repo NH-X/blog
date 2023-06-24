@@ -1,9 +1,56 @@
+<?php
+    $currentID=$_GET['blogID'];
+
+    require_once '../Conn.php';
+    $conn = Conn::getInstance();
+
+    $selectCurrentSql="select distinct * from blog_data where _id='$currentID'";
+    $currentBlog=$conn->query($selectCurrentSql);
+
+    if($currentBlog->num_rows>0){
+        $row=$currentBlog->fetch_assoc();
+        $blogID=$row['_id'];
+        $blogTitle=$row['blog_title'];
+        $blogDate=$row['blog_date'];
+        $blogType=$row['blog_type'];
+        $blogWeather=$row['blog_weather'];
+        $blogPic=$row['blog_pic'];
+        $blogContent=$row['blog_content'];
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Retrieve the form inputs
+        $blogTitle = $_POST['blog_title'];
+        $blogDate = $_POST['add_date'];
+        $blogType = $_POST['b_type'];
+        $blogWeather = $_POST['b_weather'];
+        $blogPic=$_POST['rePic'];    
+        $blogText = strip_tags($_POST['blog_text']);
+
+        // Save the form content to the database
+        $sql = "INSERT INTO blog_data (blog_title, blog_date, blog_type, blog_weather,blog_pic, blog_content) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssss", $blogTitle, $blogDate, $blogType, $blogWeather,$blogPic, $blogText);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            echo "博客添加成功！";
+        } else {
+            echo "博客添加失败，请重试。";
+        }
+        $stmt->close();
+    }
+?>
+
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>博客修改页面</title>
 <link href="../style/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 
 <body>
@@ -34,10 +81,10 @@
           <form id="form1" name="form1" method="post">
               <ul>
                 <li>博客标题：
-                  <input name="blog_title" type="text" class="input01" id="blog_title" placeholder="请输入标题">
+                  <input name="blog_title" type="text" class="input01" id="blog_title" placeholder="请输入标题" value="<?php echo $blogTitle?>">
                 </li>
                 <li>发表日期：
-                  <input type="text" name="add_date" id="add_date" class="input01">
+                  <input type="text" name="add_date" id="add_date" class="input01" value="<?php echo $blogDate?>">
                 </li>
                 <li>博客类型：
                   <input name="b_type" type="radio" value="index11.gif" checked="checked"> <img src="../images/index11.gif" width="19" height="20" title="日志" alt="">
@@ -58,7 +105,7 @@
                 <li>上传图片：
                   <input type="button" name="sc" id="sc" value="上传图片"> <img src="../images/1572.gif" alt="这是显示上传预览图片的位置" id="showImg" width="275" height="40"></li>
                 <li>博客内容：
-                  <textarea name="blog_text" class="input02" id="blog_text" placeholder="请输入内容"></textarea>
+                  <textarea name="blog_text" class="input02" id="blog_text" placeholder="请输入内容"><?php echo $blogContent?></textarea>
                 </li>
               </ul>
               <input type="submit" name="qr" id="qr" value="确认修改">
@@ -80,3 +127,6 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+    UE.getEditor('blog_text',{initialFrameWidth:570,initialFrameHeight:200})
+</script>

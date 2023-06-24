@@ -18,8 +18,8 @@ insert into blog_data (
 )values(
 	'Java程序设计基础教程',
 	'2023-06-21',
-	'教育',
-	'雨',
-	'Java图标',
+	'index12.gif',
+	'weather_cloudy.gif',
+	'first.jpg',
 	'HashMap使用红黑树（B-树)存储数据，一个key可对应多个value，当某个key对应的value数量达到7个及以内时，采用的数据结构时链表，当value数量达到7个以上时，采用的数据结构为红黑树（B-树）。'
 )

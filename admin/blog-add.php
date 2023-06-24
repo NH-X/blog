@@ -8,18 +8,7 @@
         $blogDate = $_POST['add_date'];
         $blogType = $_POST['b_type'];
         $blogWeather = $_POST['b_weather'];
-        $blogPic='';
-        if (isset($_FILES['file']['name'])) {
-            $targetDir = "../upload/"; // 设置文件上传目录
-            $targetFile = $targetDir . basename($_FILES["file"]["name"]);
-            
-            // 移动上传的文件到目标位置
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
-                $blogPic = basename($_FILES["file"]["name"]); // 获取文件名
-            } else {
-                echo "文件上传失败，请重试。";
-            }
-        }     
+        $blogPic=$_POST['rePic'];    
         $blogText = strip_tags($_POST['blog_text']);
 
         // Save the form content to the database
