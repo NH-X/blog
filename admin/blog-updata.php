@@ -1,21 +1,21 @@
 <?php
-    $currentID=$_GET['blogID'];
+    $currentID = $_GET['blogID'];
 
     require_once '../Conn.php';
     $conn = Conn::getInstance();
 
-    $selectCurrentSql="select distinct * from blog_data where _id='$currentID'";
-    $currentBlog=$conn->query($selectCurrentSql);
+    $selectCurrentSql = "SELECT DISTINCT * FROM blog_data WHERE _id='$currentID'";
+    $currentBlog = $conn->query($selectCurrentSql);
 
-    if($currentBlog->num_rows>0){
-        $row=$currentBlog->fetch_assoc();
-        $blogID=$row['_id'];
-        $blogTitle=$row['blog_title'];
-        $blogDate=$row['blog_date'];
-        $blogType=$row['blog_type'];
-        $blogWeather=$row['blog_weather'];
-        $blogPic=$row['blog_pic'];
-        $blogContent=$row['blog_content'];
+    if ($currentBlog->num_rows > 0) {
+        $row = $currentBlog->fetch_assoc();
+        $blogID = $row['_id'];
+        $blogTitle = $row['blog_title'];
+        $blogDate = $row['blog_date'];
+        $blogType = $row['blog_type'];
+        $blogWeather = $row['blog_weather'];
+        $blogPic = $row['blog_pic'];
+        $blogContent = $row['blog_content'];
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -24,22 +24,26 @@
         $blogDate = $_POST['add_date'];
         $blogType = $_POST['b_type'];
         $blogWeather = $_POST['b_weather'];
-        $blogPic=$_POST['rePic'];    
+        $blogPic = isset($_POST['rePic']) ? $_POST['rePic'] : $blogPic;
         $blogText = strip_tags($_POST['blog_text']);
 
-        // Save the form content to the database
-        $sql = "INSERT INTO blog_data (blog_title, blog_date, blog_type, blog_weather,blog_pic, blog_content) VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssss", $blogTitle, $blogDate, $blogType, $blogWeather,$blogPic, $blogText);
+        // Update the data in the database
+        $updateSql = "UPDATE blog_data SET blog_title=?, blog_date=?, blog_type=?, blog_weather=?, blog_pic=?, blog_content=? WHERE _id=?";
+        $stmt = $conn->prepare($updateSql);
+        $stmt->bind_param("sssssss", $blogTitle, $blogDate, $blogType, $blogWeather, $blogPic, $blogText, $currentID);
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
-            echo "博客添加成功！";
+            echo "博客修改成功！";
         } else {
-            echo "博客添加失败，请重试。";
+            echo "博客修改失败，请重试。";
         }
         $stmt->close();
+        // Refresh the page
+        echo '<script>window.location.href = "blog-updata.php?blogID=' . $currentID . '";</script>';
     }
+
+    $conn->close();
 ?>
 
 <!doctype html>
@@ -103,7 +107,9 @@
                   <input type="radio" name="b_weather" value="weather_snow.gif"> <img src="../images/weather_snow.gif" width="16" height="16" alt="">
                 </li>
                 <li>上传图片：
-                  <input type="button" name="sc" id="sc" value="上传图片"> <img src="../images/1572.gif" alt="这是显示上传预览图片的位置" id="showImg" width="275" height="40"></li>
+                  <input type="button" name="sc" id="sc" value="上传图片"> <img src="../images/1572.gif" alt="这是显示上传预览图片的位置" id="showImg" width="275" height="40">
+                  <input type="hidden" name="rePic" id="hiddenField"> 
+                </li>
                 <li>博客内容：
                   <textarea name="blog_text" class="input02" id="blog_text" placeholder="请输入内容"><?php echo $blogContent?></textarea>
                 </li>
