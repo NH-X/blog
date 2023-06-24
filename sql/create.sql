@@ -17,5 +17,5 @@ create table if not exists blog_data(
 	blog_type varchar(255) not null,
 	blog_weather varchar(255) not null,
 	blog_pic varchar(255) not null,
-	blog_centent text(255) not null
+	blog_content text(255) not null
 );

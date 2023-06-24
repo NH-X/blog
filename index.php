@@ -72,7 +72,7 @@
                                 $blogType=$row['blog_type'];
                                 $blogWeather=$row['blog_weather'];
                                 $blogPic=$row['blog_pic'];
-                                $blogCentent=$row['blog_centent'];
+                                $blogContent=$row['blog_content'];
                                 ?>
                                 <!---->
                                 <div id="left"></div>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div id="content-text">
                                         <img src="upload/<?php echo $blogPic?>" width="550" height="80" alt="">
-                                        <br><?php echo substr($blogCentent,0,260);echo "..."?>
+                                        <br><?php echo substr($blogContent,0,260);echo "..."?>
                                     </div>
                                     <div id="content-more">
                                         <a href="show.php?blogID=<?php echo $blogID?>" target="_blank">

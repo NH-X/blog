@@ -1,9 +1,51 @@
+<?php
+    require_once '../Conn.php';
+    $conn = Conn::getInstance();
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Retrieve the form inputs
+        $blogTitle = $_POST['blog_title'];
+        $blogDate = $_POST['add_date'];
+        $blogType = $_POST['b_type'];
+        $blogWeather = $_POST['b_weather'];
+        $blogPic='';
+        if (isset($_FILES['file']['name'])) {
+            $targetDir = "../upload/"; // 设置文件上传目录
+            $targetFile = $targetDir . basename($_FILES["file"]["name"]);
+            
+            // 移动上传的文件到目标位置
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+                $blogPic = basename($_FILES["file"]["name"]); // 获取文件名
+            } else {
+                echo "文件上传失败，请重试。";
+            }
+        }     
+        $blogText = strip_tags($_POST['blog_text']);
+
+        // Save the form content to the database
+        $sql = "INSERT INTO blog_data (blog_title, blog_date, blog_type, blog_weather,blog_pic, blog_content) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssss", $blogTitle, $blogDate, $blogType, $blogWeather,$blogPic, $blogText);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            echo "博客添加成功！";
+        } else {
+            echo "博客添加失败，请重试。";
+        }
+        $stmt->close();
+    }
+?>
+
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>添加博客页面</title>
 <link href="../style/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 
 <body>
@@ -56,7 +98,9 @@
                   <input type="radio" name="b_weather" value="weather_snow.gif"> <img src="../images/weather_snow.gif" width="16" height="16" alt="">
                 </li>
                 <li>上传图片：
-                  <input type="button" name="sc" id="sc" value="上传图片"> <img src="../images/1572.gif" alt="这是显示上传预览图片的位置" id="showImg" width="275" height="40"></li>
+                  <input type="button" name="sc" id="sc" value="上传图片" onclick="window.open('fupload.php?useForm=forml&amp;prevImg&amp;upUrl=../upload&amp;reItem=','fileUpload','width=400,height=180')">
+                  <input type="hidden" name="rePic" id="hiddenField"> 
+                  <img src="../images/1572.gif" alt="这是显示上传预览图片的位置" id="rePic" width="275" height="40"></li>
                 <li>博客内容：
                   <textarea name="blog_text" class="input02" id="blog_text" placeholder="请输入内容"></textarea>
                 </li>
@@ -80,3 +124,6 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+    UE.getEditor('blog_text',{initialFrameWidth:570,initialFrameHeight:200})
+</script>

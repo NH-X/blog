@@ -5,7 +5,7 @@
 <title>文件上传页面</title>
 </head>
 <script language="JavaScript">
-<!--
+//<!--
 //检查上传内容 checkFileUpload(表单名称,文件类型,是否需要上传,文件大小)
 function checkFileUpload(form,extensions,requireUpload,sizeLimit) {
   document.MM_returnValue = true;

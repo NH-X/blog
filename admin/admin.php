@@ -67,7 +67,7 @@
                     $blogType=$row['blog_type'];
                     $blogWeather=$row['blog_weather'];
                     $blogPic=$row['blog_pic'];
-                    $blogCentent=$row['blog_centent'];
+                    $blogContent=$row['blog_content'];
                     ?>
                     <div id="admin-list">
                         <dl>

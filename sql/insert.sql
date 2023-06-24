@@ -14,7 +14,7 @@ insert into blog_data (
 	blog_type ,
 	blog_weather ,
 	blog_pic ,
-	blog_centent 
+	blog_content 
 )values(
 	'Java程序设计基础教程',
 	'2023-06-21',

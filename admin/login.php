@@ -22,9 +22,7 @@
             header("Location:admin.php");
         }
         else{
-          // 登录失败
-          // 这里可以添加相应的提示或跳转到登录页面
-          echo "用户名或密码错误";
+            echo "登录失败";
         }
     }
 ?>
