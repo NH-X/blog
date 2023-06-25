@@ -32,11 +32,11 @@
         <div id="box">
             <div id="left-bar">
                 <div id="quickmenu">
-                    <img src="images/work1.gif" width="88" height="70" alt="">
-                    <img src="images/work2.gif" width="88" height="70" alt="">
-                    <img src="images/work3.gif" width="88" height="70" alt="">
-                    <img src="images/work4.gif" width="88" height="70" alt="">
-                    <img src="images/work5.gif" width="88" height="70" alt="">
+                    <img src="images/work1.jpg" width="88" height="70" alt="">
+                    <img src="images/work2.jpg" width="88" height="70" alt="">
+                    <img src="images/work3.jpg" width="88" height="70" alt="">
+                    <img src="images/work4.jpg" width="88" height="70" alt="">
+                    <img src="images/work5.jpg" width="88" height="70" alt="">
                     <img src="images/left_btn.gif" width="105" height="22" style="margin-top:25px;" alt="">
                 </div>
             </div>
@@ -65,20 +65,20 @@
                         <img src="images/work_left.gif" width="27" height="57" alt="">
                     </div>
                     <div class="pic01">
-                        <img src="images/work6.gif" width="112" height="102" alt="">
-                        <br>开心大眼仔
+                        <img src="images/work6.jpg" width="112" height="102" alt="">
+                        <br>弓箭女皇
                     </div>
                     <div class="pic01">
-                        <img src="images/work7.gif" width="112" height="102" alt="">
-                        <br>绝望主妇
+                        <img src="images/work7.jpg" width="112" height="102" alt="">
+                        <br>百特曼
                     </div>
                     <div class="pic01">
-                        <img src="images/work8.gif" width="112" height="102" alt="">
-                        <br>精美图标集
+                        <img src="images/work8.jpg" width="112" height="102" alt="">
+                        <br>嗯嗯🤔
                     </div>
                     <div class="pic01">
-                        <img src="images/work9.gif" width="112" height="102" alt="">
-                        <br>机器狗阿七
+                        <img src="images/work9.jpg" width="112" height="102" alt="">
+                        <br>狐狸
                     </div>
                     <div id="pic-right">
                         <img src="images/work_right.gif" width="27" height="57" alt="">

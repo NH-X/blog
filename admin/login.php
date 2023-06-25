@@ -38,7 +38,7 @@
 <body>
 <div id="box">
   <div id="left-bar">
-    <div id="quickmenu"><img src="../images/work1.gif" width="88" height="70" alt=""><img src="../images/work2.gif" width="88" height="70" alt=""><img src="../images/work3.gif" width="88" height="70" alt=""><img src="../images/work4.gif" width="88" height="70" alt=""><img src="../images/work5.gif" width="88" height="70" alt=""><img src="../images/left_btn.gif" width="105" height="22" style="margin-top:25px;" alt=""></div>
+    <div id="quickmenu"><img src="../images/work1.jpg" width="88" height="70" alt=""><img src="../images/work2.jpg" width="88" height="70" alt=""><img src="../images/work3.jpg" width="88" height="70" alt=""><img src="../images/work4.jpg" width="88" height="70" alt=""><img src="../images/work5.jpg" width="88" height="70" alt=""><img src="../images/left_btn.gif" width="105" height="22" style="margin-top:25px;" alt=""></div>
   </div>
   <div id="main-bg">
     <div id="top">

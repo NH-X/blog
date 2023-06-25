@@ -60,7 +60,14 @@
 <body>
 <div id="box">
   <div id="left-bar">
-    <div id="quickmenu"><img src="../images/work1.gif" width="88" height="70" alt=""><img src="../images/work2.gif" width="88" height="70" alt=""><img src="../images/work3.gif" width="88" height="70" alt=""><img src="../images/work4.gif" width="88" height="70" alt=""><img src="../images/work5.gif" width="88" height="70" alt=""><img src="../images/left_btn.gif" width="105" height="22" style="margin-top:25px;" alt=""></div>
+    <div id="quickmenu">
+      <img src="../images/work1.jpg" width="88" height="70" alt="">
+      <img src="../images/work2.jpg" width="88" height="70" alt="">
+      <img src="../images/work3.jpg" width="88" height="70" alt="">
+      <img src="../images/work4.jpg" width="88" height="70" alt="">
+      <img src="../images/work5.jpg" width="88" height="70" alt="">
+      <img src="../images/left_btn.gif" width="105" height="22" style="margin-top:25px;" alt="">
+    </div>
   </div>
   <div id="main-bg">
     <div id="top">
@@ -108,6 +115,7 @@
                 </li>
                 <li>上传图片：
                   <input type="button" name="sc" id="sc" value="上传图片"> <img src="../images/1572.gif" alt="这是显示上传预览图片的位置" id="showImg" width="275" height="40">
+                  <input name="rePic" type="hidden" id="rePic" value="<?php echo $blogPic ?>"> 
                   <input type="hidden" name="rePic" id="hiddenField"> 
                 </li>
                 <li>博客内容：

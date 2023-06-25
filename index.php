@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     require_once 'Conn.php';
     $conn=Conn::getInstance();
 
@@ -32,7 +32,14 @@
     <body>
         <div id="box">
             <div id="left-bar">
-                <div id="quickmenu"><img src="images/work1.gif" width="88" height="70" alt=""><img src="images/work2.gif" width="88" height="70" alt=""><img src="images/work3.gif" width="88" height="70" alt=""><img src="images/work4.gif" width="88" height="70" alt=""><img src="images/work5.gif" width="88" height="70" alt=""><img src="images/left_btn.gif" width="105" height="22" style="margin-top:25px;" alt=""></div>
+                <div id="quickmenu">
+                    <img src="images/work1.jpg" width="88" height="70" alt="">
+                    <img src="images/work2.jpg" width="88" height="70" alt="">
+                    <img src="images/work3.jpg" width="88" height="70" alt="">
+                    <img src="images/work4.jpg" width="88" height="70" alt="">
+                    <img src="images/work5.jpg" width="88" height="70" alt="">
+                    <img src="images/left_btn.gif" width="105" height="22" style="margin-top:25px;" alt="">
+                </div>
             </div>
             <div id="main-bg">
                 <div id="top">
@@ -52,14 +59,14 @@
                 <div id="banner"><img src="images/banner.jpg" width="808" height="343" alt=""></div>
                 <div id="pic-bg">
                     <div id="pic-left"><img src="images/work_left.gif" width="27" height="57" alt=""></div>
-                    <div class="pic01"><img src="images/work6.gif" width="112" height="102" alt=""><br>
-                        开心大眼仔</div>
-                    <div class="pic01"><img src="images/work7.gif" width="112" height="102" alt=""><br>
-                        绝望主妇</div>
-                    <div class="pic01"><img src="images/work8.gif" width="112" height="102" alt=""><br>
-                        精美图标集</div>
-                    <div class="pic01"><img src="images/work9.gif" width="112" height="102" alt=""><br>
-                        机器狗阿七</div>
+                    <div class="pic01"><img src="images/work6.jpg" width="112" height="102" alt=""><br>
+                        弓箭女皇</div>
+                    <div class="pic01"><img src="images/work7.jpg" width="112" height="102" alt=""><br>
+                        蝙蝠侠</div>
+                    <div class="pic01"><img src="images/work8.jpg" width="112" height="102" alt=""><br>
+                        嗯嗯🤔</div>
+                    <div class="pic01"><img src="images/work9.jpg" width="112" height="102" alt=""><br>
+                        狐狸</div>
                     <div id="pic-right"><img src="images/work_right.gif" width="27" height="57" alt=""></div>
                 </div>
                 <div id="main">
@@ -93,7 +100,7 @@
                                     </div>
                                     <div id="content-more">
                                         <a href="show.php?blogID=<?php echo $blogID?>" target="_blank">
-                                            <img src="images/index07.gif" width="13" height="10" alt=""> 查看详情
+                                            <img src="images/blog_content07.gif" width="13" height="10" alt=""> 查看详情
                                         </a>
                                     </div>
                                 </div>
@@ -109,16 +116,16 @@
                                 echo "第一页 最后一页";
                             }
                             else{
-                                echo "<a href='index.php?page=1'>第一页</a> ";
+                                echo "<a href='blog_content.php?page=1'>第一页</a> ";
                                 if ($page > 1) {
                                 $prevPage = $page - 1;
-                                echo "<a href='index.php?page=$prevPage'>上一页</a> ";
+                                echo "<a href='blog_content.php?page=$prevPage'>上一页</a> ";
                                 }
                                 if ($page < $totalPages) {
                                 $nextPage = $page + 1;
-                                echo "<a href='index.php?page=$nextPage'>下一页</a> ";
+                                echo "<a href='blog_content.php?page=$nextPage'>下一页</a> ";
                                 }
-                                echo "<a href='index.php?page=$totalPages'>最后一页</a>";
+                                echo "<a href='blog_content.php?page=$totalPages'>最后一页</a>";
                             }
                         ?>
                     </div>
@@ -126,17 +133,17 @@
                     <div id="right">
                         <div id="right-menu">
                             <ul>
-                                <li><img src="images/index11.gif" width="19" height="20" alt="">日志 Blogs</li>
-                                <li><img src="images/index12.gif" width="17" height="18" alt="">文章 Aticle</li>
-                                <li><img src="images/index13.gif" width="19" height="19" alt="">作品 Works</li>
-                                <li><img src="images/index14.gif" width="20" height="17" alt="">图片 Photos</li>
-                                <li><img src="images/index15.gif" width="21" height="18" alt="">其他 Others</li>
-                                <li><img src="images/index16.gif" width="19" height="17" alt="">下载 Download</li>
-                                <li><img src="images/index17.gif" width="21" height="19" alt="">留言 Guestbook</li>
+                                <li><img src="images/blog_content11.png" width="19" height="20" alt="">日志 Blogs</li>
+                                <li><img src="images/blog_content12.png" width="17" height="18" alt="">文章 Aticle</li>
+                                <li><img src="images/blog_content13.png" width="19" height="19" alt="">作品 Works</li>
+                                <li><img src="images/blog_content14.png" width="20" height="17" alt="">图片 Photos</li>
+                                <li><img src="images/blog_content15.png" width="21" height="18" alt="">其他 Others</li>
+                                <li><img src="images/blog_content16.png" width="19" height="17" alt="">下载 Download</li>
+                                <li><img src="images/blog_content17.png" width="21" height="19" alt="">留言 Guestbook</li>
                             </ul>
                         </div>
                         <div id="right-gltitle">
-                            <img src="images/index18.gif" width="81" height="19" alt="">
+                            <img src="images/blog_content18.gif" width="81" height="19" alt="">
                         </div>
                         <div id="right-gltext">
                             <ul>

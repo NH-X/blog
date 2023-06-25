@@ -40,7 +40,7 @@
 <body>
 <div id="box">
   <div id="left-bar">
-    <div id="quickmenu"><img src="../images/work1.gif" width="88" height="70" alt=""><img src="../images/work2.gif" width="88" height="70" alt=""><img src="../images/work3.gif" width="88" height="70" alt=""><img src="../images/work4.gif" width="88" height="70" alt=""><img src="../images/work5.gif" width="88" height="70" alt=""><img src="../images/left_btn.gif" width="105" height="22" style="margin-top:25px;" alt=""></div>
+    <div id="quickmenu"><img src="../images/work1.jpg" width="88" height="70" alt=""><img src="../images/work2.jpg" width="88" height="70" alt=""><img src="../images/work3.jpg" width="88" height="70" alt=""><img src="../images/work4.jpg" width="88" height="70" alt=""><img src="../images/work5.jpg" width="88" height="70" alt=""><img src="../images/left_btn.gif" width="105" height="22" style="margin-top:25px;" alt=""></div>
   </div>
   <div id="main-bg">
     <div id="top">
@@ -87,9 +87,9 @@
                   <input type="radio" name="b_weather" value="weather_snow.gif"> <img src="../images/weather_snow.gif" width="16" height="16" alt="">
                 </li>
                 <li>上传图片：
-                  <input type="button" name="sc" id="sc" value="上传图片" onclick="window.open('fupload.php?useForm=forml&amp;prevImg&amp;upUrl=../upload&amp;reItem=','fileUpload','width=400,height=180')">
-                  <input type="hidden" name="rePic" id="hiddenField"> 
-                  <img src="../images/1572.gif" alt="这是显示上传预览图片的位置" id="rePic" width="275" height="40"></li>
+                  <input type="button" name="sc" id="sc" value="上传图片" onclick="window.open('fupload.php?useForm=form1&amp;prevImg=showImg&amp;upUrl=../upload&amp;reItem=rePic','fileUpload','width=400,height=180')">
+                  <input type="hidden" name="rePic" id="rePic"> 
+                  <img src="../images/1572.gif" alt="这是显示上传预览图片的位置" id="showImg" width="275" height="40"></li>
                 <li>博客内容：
                   <textarea name="blog_text" class="input02" id="blog_text" placeholder="请输入内容"></textarea>
                 </li>
